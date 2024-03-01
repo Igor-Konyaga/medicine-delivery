@@ -1,13 +1,15 @@
 import { Route, Routes } from 'react-router-dom';
 import SharedLayout from 'components/SharedLayout/SharedLayout';
-
-const test = import.meta.env.VITE_API_TEST;
+import { Shop } from './pages/Shop/Shop';
+import { ShoppingCart } from './pages/ShoppingCart/ShoppingCart';
 
 function App() {
-  console.log(test);
   return (
     <Routes>
-      <Route path="/" element={<SharedLayout />}></Route>
+      <Route path="/" element={<SharedLayout />}>
+        <Route path="shop" element={<Shop />} />
+        <Route path="shopping-cart" element={<ShoppingCart />} />
+      </Route>
     </Routes>
   );
 }
