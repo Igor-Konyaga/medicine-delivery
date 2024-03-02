@@ -4,7 +4,9 @@ import { Navigation } from './Navigation/Navigation';
 export const Header = () => {
   return (
     <StyledHeader>
-      <Navigation />
+      <div className='header-body__wrapper'>
+        <Navigation />
+      </div>
     </StyledHeader>
   );
 };
