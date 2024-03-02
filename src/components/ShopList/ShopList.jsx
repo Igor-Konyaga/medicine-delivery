@@ -12,7 +12,7 @@ export const ShopList = () => {
     <StyledShopList>
       {validList &&
         shopList.map((shop) => {
-          return <ShopItem key={shop.name} name={shop.name} />;
+          return <ShopItem id={shop._id} key={shop.name} name={shop.name} />;
         })}
     </StyledShopList>
   );

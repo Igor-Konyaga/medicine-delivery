@@ -5,13 +5,12 @@ const medicineInstance = axios.create({
 });
 
 export const getMedicines = async (shopId) => {
-  const data = await medicineInstance.get('api/medisines', { shopId });
-
+  const data = await medicineInstance.post('api/medicines', { shopId });
   return data;
 };
 
 export const createMedicines = async (name, shopId) => {
-  const data = await medicineInstance.post('api/medisines', {
+  const data = await medicineInstance.post('api/medicines', {
     name,
     owner: shopId,
   });
