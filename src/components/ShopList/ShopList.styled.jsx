@@ -8,11 +8,13 @@ export const StyledSectionShops = styled.div`
 
   padding: 30px;
 
-  border: 2px solid lightblue;
-
   flex-basis: 33%;
 
   height: calc(100vh - 162px);
+
+  border: 2px solid #737373;
+
+  border-radius: 8px;
 `;
 
 export const StyledTitle = styled.h3`
@@ -26,7 +28,6 @@ export const StyledShopList = styled.ul`
 `;
 
 export const StyledShopItem = styled.li`
-
   .shop-btn {
     display: flex;
     justify-content: center;

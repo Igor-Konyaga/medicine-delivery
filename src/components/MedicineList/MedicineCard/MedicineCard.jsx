@@ -8,7 +8,7 @@ import {
 } from '../../../redux/medicines/medicinesReducer';
 import { shoppingCartData } from '../../../redux/medicines/medicinesSelectors';
 
-export const MedicineCard = ({ name, id }) => {
+export const MedicineCard = ({ name, id, price }) => {
   const [addCart, setAddCart] = useState(false);
   const dispatch = useDispatch();
 
@@ -32,10 +32,16 @@ export const MedicineCard = ({ name, id }) => {
   };
   return (
     <StyledMedicineCard>
-      <GiMedicines className="card__icon" />
-      {name}
+      <div className="wrapper-content">
+        <GiMedicines className="card__icon" />
+        <div>
+          <h3>{name}</h3>
+          <p>Price: {price} UA</p>
+        </div>
+      </div>
+
       <button onClick={handleClickBtn} className="card__btn" type="button">
-        {addCart || isAdded ? 'added' : 'add to Cart'}
+        {addCart || isAdded ? 'remove from cart' : 'add to Cart'}
       </button>
     </StyledMedicineCard>
   );

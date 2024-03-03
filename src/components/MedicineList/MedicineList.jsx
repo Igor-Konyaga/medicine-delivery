@@ -33,6 +33,7 @@ export const MedicineList = () => {
                 key={medicine._id}
                 id={medicine._id}
                 name={medicine.name}
+					 price={medicine.price}
               />
             );
           })}

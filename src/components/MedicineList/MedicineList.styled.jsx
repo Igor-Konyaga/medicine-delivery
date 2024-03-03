@@ -8,7 +8,9 @@ export const StyledSectionMidicines = styled.div`
 
   overflow-y: auto;
 
-  border: 2px solid lightblue;
+  border: 2px solid #737373;
+
+  border-radius: 8px;
 
   .midicines__title {
     margin-bottom: 12px;
