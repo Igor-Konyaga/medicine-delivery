@@ -1,5 +1,5 @@
-import { MedicineList } from '../../../src/components/MedicineList/MedicineList';
-import { ShopList } from '../../../src/components/ShopList/ShopList';
+import { MedicineList } from '../../components/MedicineList/MedicineList';
+import { ShopList } from '../../components/shopList/shopList';
 import { StyledShopPage } from './Shop.styled';
 
 export const Shop = () => {
