@@ -30,12 +30,23 @@ export const fetchMedicines = createAsyncThunk(
 const INITIAL_STATE = {
   allMedicine: [],
   medicineList: [],
+  shoppingCart: [],
   error: null,
 };
 
 const medicinesSlice = createSlice({
   name: 'medicines',
   initialState: INITIAL_STATE,
+  reducers: {
+    addMedicine(state, action) {
+      state.shoppingCart = [action.payload, ...state.shoppingCart];
+    },
+    deleteMedicine(state, action) {
+      state.shoppingCart = state.shoppingCart.filter(
+        (medicine) => medicine.id !== action.payload
+      );
+    },
+  },
   extraReducers: (builder) =>
     builder
       .addCase(fetchMedicines.pending, (state) => {
@@ -59,3 +70,5 @@ const medicinesSlice = createSlice({
 });
 
 export const medicinesReducer = medicinesSlice.reducer;
+
+export const { addMedicine, deleteMedicine } = medicinesSlice.actions;

@@ -16,7 +16,6 @@ export const MedicineList = () => {
   const shopName = useSelector(shopData);
 
   const renderMedicines = medicines.length === 0 ? allMedicine : medicines;
-  console.log('renderMedicines: ', renderMedicines);
 
   const validList =
     Array.isArray(renderMedicines) && renderMedicines.length > 0;
@@ -29,7 +28,13 @@ export const MedicineList = () => {
       <StyledMedicineList>
         {validList &&
           renderMedicines.map((medicine) => {
-            return <MedicineCard key={medicine._id} name={medicine.name} />;
+            return (
+              <MedicineCard
+                key={medicine._id}
+                id={medicine._id}
+                name={medicine.name}
+              />
+            );
           })}
       </StyledMedicineList>
     </StyledSectionMidicines>
