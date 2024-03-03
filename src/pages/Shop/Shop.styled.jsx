@@ -5,4 +5,5 @@ export const StyledShopPage = styled.section`
   column-gap: 30px;
 
   padding-top: 40px;
+  padding-bottom: 40px;
 `;
