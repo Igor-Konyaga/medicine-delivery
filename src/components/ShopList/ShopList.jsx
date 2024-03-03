@@ -4,7 +4,7 @@ import {
   StyledShopItem,
   StyledShopList,
   StyledTitle,
-} from './shopList.styled';
+} from './ShopList.styled';
 import { shops } from '../../redux/shops/shopsSelectors';
 import { fetchMedicines } from '../../redux/medicines/medicinesReducer';
 import { useState } from 'react';
