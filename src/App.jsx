@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import SharedLayout from 'components/SharedLayout/SharedLayout';
-import { Shop } from '../src/pages/Shop/Shop';
+import { Shop } from './pages/Shop/Shop';
 import { ShoppingCart } from './pages/ShoppingCart/ShoppingCart';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
