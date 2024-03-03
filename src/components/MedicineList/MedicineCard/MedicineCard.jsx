@@ -19,6 +19,7 @@ export const MedicineCard = ({ name, id, price }) => {
   const medicine = {
     id,
     name,
+    price,
   };
 
   const handleClickBtn = () => {
