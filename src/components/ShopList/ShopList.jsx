@@ -1,13 +1,28 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   StyledSectionShops,
+  StyledShopItem,
   StyledShopList,
   StyledTitle,
 } from './shopList.styled';
 import { shops } from '../../redux/shops/shopsSelectors';
-import { ShopItem } from './ShopItem/ShopItem';
+import { fetchMedicines } from '../../redux/medicines/medicinesReducer';
+import { useState } from 'react';
+import { setShopName } from '../../redux/shops/shopsReducer';
 
 export const ShopList = () => {
+  const [activeBtn, setActiveBtn] = useState(null);
+  const dispatch = useDispatch();
+
+  const handleClick = (btnId) => {
+    setActiveBtn(btnId);
+  };
+
+  const handleClickBtn = (shopId, shopName) => {
+    dispatch(fetchMedicines(shopId));
+    dispatch(setShopName(shopName));
+  };
+
   const shopList = useSelector(shops);
 
   const validList = Array.isArray(shopList) && shopList.length > 0;
@@ -18,7 +33,22 @@ export const ShopList = () => {
       <StyledShopList>
         {validList &&
           shopList.map((shop) => {
-            return <ShopItem id={shop._id} key={shop.name} name={shop.name} />;
+            return (
+              <StyledShopItem
+                onClick={() => handleClick(shop._id)}
+                key={shop.name}
+              >
+                <button
+                  className={
+                    activeBtn === shop._id ? 'shop-btn active' : 'shop-btn'
+                  }
+                  onClick={() => handleClickBtn(shop._id, shop.name)}
+                  type="button"
+                >
+                  {shop.name}
+                </button>
+              </StyledShopItem>
+            );
           })}
       </StyledShopList>
     </StyledSectionShops>

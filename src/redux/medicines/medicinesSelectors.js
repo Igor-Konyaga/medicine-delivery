@@ -1,1 +1,2 @@
 export const medicinesData = (state) => state.medicines.medicineList;
+export const allMedicineData = (state) => state.medicines.allMedicine;

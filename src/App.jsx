@@ -5,12 +5,14 @@ import { ShoppingCart } from './pages/ShoppingCart/ShoppingCart';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { fetchAllShop } from './redux/shops/shopsReducer';
+import { fetchAllMedicine } from './redux/medicines/medicinesReducer';
 
 function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchAllShop());
+    dispatch(fetchAllMedicine());
   }, [dispatch]);
 
   return (

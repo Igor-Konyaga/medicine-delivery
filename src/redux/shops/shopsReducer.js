@@ -16,12 +16,18 @@ export const fetchAllShop = createAsyncThunk(
 
 const INITIAL_STATE = {
   shopList: [],
+  shopName: '',
   error: null,
 };
 
 const shopsSlice = createSlice({
   name: 'medicines',
   initialState: INITIAL_STATE,
+  reducers: {
+    setShopName(state, action) {
+      state.shopName = action.payload;
+    },
+  },
   extraReducers: (builder) =>
     builder
       .addCase(fetchAllShop.pending, (state) => {
@@ -36,3 +42,5 @@ const shopsSlice = createSlice({
 });
 
 export const shopsReducer = shopsSlice.reducer;
+
+export const { setShopName } = shopsSlice.actions;
