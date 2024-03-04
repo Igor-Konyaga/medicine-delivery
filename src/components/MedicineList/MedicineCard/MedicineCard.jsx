@@ -48,7 +48,15 @@ export const MedicineCard = ({ name, id, price }) => {
           <h3 className="card__title">{name}</h3>
           <p className="card__price">Price: {price} UA</p>
           <div className="card__amount">
-            <button onClick={() => setAmount(amount - 1)} type="button">
+            <button
+              onClick={() => {
+                if (amount <= 1) {
+                  return;
+                }
+                setAmount(amount - 1);
+              }}
+              type="button"
+            >
               <FaMinus />
             </button>
             {amount}

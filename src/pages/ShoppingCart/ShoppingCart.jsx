@@ -111,10 +111,13 @@ export const ShoppingCart = () => {
                           <div className="card__amount">
                             <button
                               onClick={() => {
-                                 handleAmountChange(
-												medicine.id,
-												medicine.amount - 1
-											 );
+                                if (medicine.amount <= 1) {
+                                  return;
+                                }
+                                handleAmountChange(
+                                  medicine.id,
+                                  medicine.amount - 1
+                                );
                               }}
                               type="button"
                             >
