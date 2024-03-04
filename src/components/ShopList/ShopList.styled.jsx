@@ -34,7 +34,7 @@ export const StyledShopItem = styled.li`
     align-items: center;
 
     padding: 12px 16px;
-    min-width: 160px;
+    width: 100%;
 
     border-radius: 8px;
     border: 2px solid #737373;
