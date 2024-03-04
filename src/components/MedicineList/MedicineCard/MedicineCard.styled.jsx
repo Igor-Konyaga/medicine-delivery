@@ -26,13 +26,57 @@ export const StyledMedicineCard = styled.li`
 
     justify-content: space-between;
 
-	 h3{
-		margin-bottom: 12px;
-	 }
+    .card__title {
+      margin-bottom: 12px;
+    }
 
-    p {
+    .card__price {
+      margin-bottom: 16px;
+
       font-weight: 400;
       font-size: 14px;
+    }
+    .card__amount {
+      padding: 6px 10px;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      width: 120px;
+
+      background-color: #e3e3e3;
+      color: #737373;
+      border-radius: 8px;
+
+      font-weight: 400;
+      font-size: 16px;
+
+      button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        width: 24px;
+        height: 24px;
+
+        background-color: inherit;
+        border: none;
+
+        svg {
+          fill: #737373;
+          transition: all 0.3s;
+        }
+
+        &:hover,
+        &:focus {
+          svg {
+            fill: #ffbf29;
+
+            transition: all 0.3s;
+          }
+        }
+      }
     }
   }
 

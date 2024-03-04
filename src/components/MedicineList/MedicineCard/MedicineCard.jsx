@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { StyledMedicineCard } from './MedicineCard.styled';
 import { GiMedicines } from 'react-icons/gi';
+import { FaPlus } from 'react-icons/fa';
+import { FaMinus } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   addMedicine,
@@ -11,6 +13,8 @@ import Notiflix from 'notiflix';
 
 export const MedicineCard = ({ name, id, price }) => {
   const [addCart, setAddCart] = useState(false);
+  const [amount, setAmount] = useState(1);
+
   const dispatch = useDispatch();
 
   const shoppingCart = useSelector(shoppingCartData);
@@ -21,6 +25,7 @@ export const MedicineCard = ({ name, id, price }) => {
     id,
     name,
     price,
+    amount,
   };
 
   const handleClickBtn = () => {
@@ -40,8 +45,17 @@ export const MedicineCard = ({ name, id, price }) => {
       <div className="wrapper-content">
         <GiMedicines className="card__icon" />
         <div>
-          <h3>{name}</h3>
-          <p>Price: {price} UA</p>
+          <h3 className="card__title">{name}</h3>
+          <p className="card__price">Price: {price} UA</p>
+          <div className="card__amount">
+            <button onClick={() => setAmount(amount - 1)} type="button">
+              <FaMinus />
+            </button>
+            {amount}
+            <button onClick={() => setAmount(amount + 1)} type="button">
+              <FaPlus />
+            </button>
+          </div>
         </div>
       </div>
 

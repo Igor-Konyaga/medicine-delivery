@@ -31,7 +31,7 @@ export const StyledForm = styled.form`
     flex-direction: column;
     row-gap: 20px;
 
-	 justify-content: space-around;
+    justify-content: space-around;
 
     label {
       display: flex;
@@ -49,7 +49,7 @@ export const StyledForm = styled.form`
         border: 2px solid #737373;
         border-radius: 8px;
 
-		  color: inherit;
+        color: inherit;
 
         &:hover,
         &:focus {
@@ -128,8 +128,52 @@ export const StyledForm = styled.form`
         }
 
         .form__medicine-price {
+			margin-bottom: 16px;
           font-weight: 400;
           font-size: 14px;
+        }
+
+        .card__amount {
+          padding: 6px 10px;
+
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+
+          width: 150px;
+
+          background-color: #e3e3e3;
+          color: #737373;
+          border-radius: 8px;
+
+          font-weight: 400;
+          font-size: 16px;
+
+          button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            width: 24px;
+            height: 24px;
+
+            background-color: inherit;
+            border: none;
+
+            svg {
+              fill: #737373;
+              transition: all 0.3s;
+            }
+
+            &:hover,
+            &:focus {
+              svg {
+                fill: #ffbf29;
+
+                transition: all 0.3s;
+              }
+            }
+          }
         }
       }
 

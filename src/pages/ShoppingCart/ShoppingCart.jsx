@@ -3,6 +3,8 @@ import { shoppingCartData } from '../../redux/medicines/medicinesSelectors';
 import { StyledForm, StyledShoppingCart } from './ShoppingCart.styled';
 import { GiMedicines } from 'react-icons/gi';
 import { TfiShoppingCart } from 'react-icons/tfi';
+import { FaPlus } from 'react-icons/fa';
+import { FaMinus } from 'react-icons/fa';
 import {
   deleteAllMedicine,
   deleteMedicine,
@@ -97,6 +99,15 @@ export const ShoppingCart = () => {
                           <p className="form__medicine-price">
                             Price: {medicine.price} UA
                           </p>
+                          <div className="card__amount">
+                            <button type="button">
+                              <FaMinus />
+                            </button>
+                            {medicine.amount}
+                            <button type="button">
+                              <FaPlus />
+                            </button>
+                          </div>
                         </div>
                       </div>
                       <button
