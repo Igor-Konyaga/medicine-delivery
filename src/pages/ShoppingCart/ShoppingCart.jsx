@@ -12,14 +12,18 @@ import {
 } from '../../redux/medicines/medicinesReducer';
 import { fetchCreateOrder } from '../../redux/orders/ordersReducer';
 import Notiflix from 'notiflix';
-import { useState } from 'react';
 
 export const ShoppingCart = () => {
-  const [amount, setAmount] = useState(1);
-
   const shoppingCart = useSelector(shoppingCartData);
-
   const dispatch = useDispatch();
+
+  const totalPrice = shoppingCart.reduce((acc, medicine) => {
+    return medicine.price * medicine.amount + acc;
+  }, 0);
+
+  console.log(totalPrice);
+
+  console.log();
 
   const handleAmountChange = (medicineId, newAmount) => {
     dispatch(updateAmount({ medicineId, newAmount }));
@@ -160,9 +164,12 @@ export const ShoppingCart = () => {
             )}
           </div>
         </div>
-        <button className="form__btn" type="submit">
-          Submit
-        </button>
+        <div className="form__wrapper-btn">
+          <p className="form__total-price">Total price: {totalPrice} UA</p>
+          <button className="form__btn" type="submit">
+            Submit
+          </button>
+        </div>
       </StyledForm>
     </StyledShoppingCart>
   );

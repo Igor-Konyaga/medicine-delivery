@@ -128,7 +128,7 @@ export const StyledForm = styled.form`
         }
 
         .form__medicine-price {
-			margin-bottom: 16px;
+          margin-bottom: 16px;
           font-weight: 400;
           font-size: 14px;
         }
@@ -211,34 +211,44 @@ export const StyledForm = styled.form`
       }
     }
   }
-
-  .form__btn {
+  .form__wrapper-btn {
     align-self: flex-end;
-
     display: flex;
-    justify-content: center;
     align-items: center;
+    column-gap: 50px;
 
-    padding: 12px 16px;
+    .form__total-price {
+      font-size: 22px;
+    }
 
-    min-width: 200px;
+    .form__btn {
+      align-self: flex-end;
 
-    border: 2px solid #737373;
-    border-radius: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
-    background-color: inherit;
+      padding: 12px 16px;
 
-    transition: all 0.3s;
+      min-width: 200px;
 
-    font-size: 18px;
-    font-weight: 400;
+      border: 2px solid #737373;
+      border-radius: 10px;
 
-    &:hover,
-    &:focus {
-      background-color: #ffbf29;
-      color: #fff;
+      background-color: inherit;
 
       transition: all 0.3s;
+
+      font-size: 18px;
+      font-weight: 400;
+
+      &:hover,
+      &:focus {
+        background-color: #ffbf29;
+        color: #fff;
+
+        transition: all 0.3s;
+      }
     }
   }
 `;
