@@ -6,22 +6,30 @@ import { TfiShoppingCart } from 'react-icons/tfi';
 import { FaPlus } from 'react-icons/fa';
 import { FaMinus } from 'react-icons/fa';
 import {
-  addAmount,
   deleteAllMedicine,
   deleteMedicine,
+  updateAmount,
 } from '../../redux/medicines/medicinesReducer';
 import { fetchCreateOrder } from '../../redux/orders/ordersReducer';
 import Notiflix from 'notiflix';
+import { useState } from 'react';
 
 export const ShoppingCart = () => {
+  const [amount, setAmount] = useState(1);
+
   const shoppingCart = useSelector(shoppingCartData);
 
   const dispatch = useDispatch();
+
+  const handleAmountChange = (medicineId, newAmount) => {
+    dispatch(updateAmount({ medicineId, newAmount }));
+  };
 
   const validList = Array.isArray(shoppingCart) && shoppingCart.length > 0;
 
   const handleSubmitForm = async (e) => {
     e.preventDefault();
+
     const name = e.currentTarget.elements.name.value;
     const email = e.currentTarget.elements.email.value;
     const phone = e.currentTarget.elements.phone.value;
@@ -101,11 +109,27 @@ export const ShoppingCart = () => {
                             Price: {medicine.price} UA
                           </p>
                           <div className="card__amount">
-                            <button type="button">
+                            <button
+                              onClick={() => {
+                                 handleAmountChange(
+												medicine.id,
+												medicine.amount - 1
+											 );
+                              }}
+                              type="button"
+                            >
                               <FaMinus />
                             </button>
                             {medicine.amount}
-                            <button type="button">
+                            <button
+                              onClick={() => {
+                                handleAmountChange(
+                                  medicine.id,
+                                  medicine.amount + 1
+                                );
+                              }}
+                              type="button"
+                            >
                               <FaPlus />
                             </button>
                           </div>

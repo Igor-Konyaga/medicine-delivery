@@ -49,6 +49,16 @@ const medicinesSlice = createSlice({
     deleteAllMedicine(state) {
       state.shoppingCart = [];
     },
+    updateAmount(state, action) {
+      const { medicineId, newAmount } = action.payload;
+
+      const medicineUpdate = state.shoppingCart.find(
+        (item) => item.id === medicineId
+      );
+      if (medicineUpdate) {
+        medicineUpdate.amount = newAmount;
+      }
+    },
   },
   extraReducers: (builder) =>
     builder
@@ -74,5 +84,5 @@ const medicinesSlice = createSlice({
 
 export const medicinesReducer = medicinesSlice.reducer;
 
-export const { addMedicine, deleteMedicine, deleteAllMedicine, addAmount } =
+export const { addMedicine, deleteMedicine, deleteAllMedicine, updateAmount } =
   medicinesSlice.actions;
