@@ -552,6 +552,7 @@ Notiflix needs to be appended to the "<`+v+'>" element, but you called it before
     column-gap: 50px;
 
     .form__total-price {
+		color: #737373;
       font-size: 22px;
     }
 
