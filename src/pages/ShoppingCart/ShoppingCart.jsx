@@ -8,6 +8,7 @@ import {
   deleteMedicine,
 } from '../../redux/medicines/medicinesReducer';
 import { fetchCreateOrder } from '../../redux/orders/ordersReducer';
+import Notiflix from 'notiflix';
 
 export const ShoppingCart = () => {
   const shoppingCart = useSelector(shoppingCartData);
@@ -31,10 +32,17 @@ export const ShoppingCart = () => {
       medicineList: shoppingCart,
     };
 
+    if (shoppingCart.length === 0) {
+      Notiflix.Notify.warning('Your shopping cart is empty!');
+      return;
+    }
+
     dispatch(fetchCreateOrder(orderData));
     dispatch(deleteAllMedicine());
 
     e.currentTarget.reset();
+
+    Notiflix.Notify.success('Your order has been sent!');
   };
 
   return (
@@ -92,7 +100,10 @@ export const ShoppingCart = () => {
                         </div>
                       </div>
                       <button
-                        onClick={() => dispatch(deleteMedicine(medicine.id))}
+                        onClick={() => {
+                          dispatch(deleteMedicine(medicine.id));
+                          Notiflix.Notify.success('Removed from cart!');
+                        }}
                         className="card__btn"
                         type="button"
                       >

@@ -7,6 +7,7 @@ import {
   deleteMedicine,
 } from '../../../redux/medicines/medicinesReducer';
 import { shoppingCartData } from '../../../redux/medicines/medicinesSelectors';
+import Notiflix from 'notiflix';
 
 export const MedicineCard = ({ name, id, price }) => {
   const [addCart, setAddCart] = useState(false);
@@ -26,10 +27,13 @@ export const MedicineCard = ({ name, id, price }) => {
     if (!isAdded) {
       setAddCart(true);
       dispatch(addMedicine(medicine));
+      Notiflix.Notify.success('Added to cart!');
+
       return;
     }
     setAddCart(false);
     dispatch(deleteMedicine(id));
+    Notiflix.Notify.success('Removed from cart!');
   };
   return (
     <StyledMedicineCard>
