@@ -2,5 +2,5 @@
 Для запуску бекенду треба з GitHub скачати його, розпакувати, командую npm install встановити залежності і командою npm run start:dev запустити.
 
 Потім, щоб переглянути проект medicine-delivery треба перейти за посиланням
-https://igor-konyaga.github.io/medicine-delivery/.
+   https://igor-konyaga.github.io/medicine-delivery/.
 
