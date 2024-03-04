@@ -19,11 +19,46 @@ export const StyledForm = styled.form`
 
   .form__info-customer,
   .form__list-medicine {
-    padding: 20px 30px;
+    padding: 30px;
     flex-basis: calc(50% - 10px);
 
     border: 2px solid #737373;
     border-radius: 8px;
+  }
+
+  .form__info-customer {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+
+	 justify-content: space-around;
+
+    label {
+      display: flex;
+      flex-direction: column;
+      row-gap: 6px;
+
+      color: #737373;
+
+      font-size: 18px;
+
+      input {
+        padding: 10px 14px;
+
+        background-color: inherit;
+        border: 2px solid #737373;
+        border-radius: 8px;
+
+		  color: inherit;
+
+        &:hover,
+        &:focus {
+          outline: none;
+
+          border-color: #ffbf29;
+        }
+      }
+    }
   }
 
   .form__list-medicine {
@@ -36,7 +71,7 @@ export const StyledForm = styled.form`
       justify-content: center;
       align-items: center;
 
-		width: 100%;
+      width: 100%;
 
       position: absolute;
       top: 50%;

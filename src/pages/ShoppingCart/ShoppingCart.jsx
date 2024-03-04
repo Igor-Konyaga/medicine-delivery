@@ -18,24 +18,62 @@ export const ShoppingCart = () => {
 
   const handleSubmitForm = async (e) => {
     e.preventDefault();
+    const name = e.currentTarget.elements.name.value;
+    const email = e.currentTarget.elements.email.value;
+    const phone = e.currentTarget.elements.phone.value;
+    const address = e.currentTarget.elements.address.value;
 
     const orderData = {
-      name: 'Igor',
-      email: 'igor@gmail.com',
-      phone: Number('0994568158'),
-      address: 'street',
+      name,
+      email,
+      phone,
+      address,
       medicineList: shoppingCart,
     };
 
     dispatch(fetchCreateOrder(orderData));
     dispatch(deleteAllMedicine());
+
+    e.currentTarget.reset();
   };
 
   return (
     <StyledShoppingCart>
       <StyledForm onSubmit={handleSubmitForm}>
         <div className="form__wrapper-order">
-          <div className="form__info-customer"></div>
+          <div className="form__info-customer">
+            <label>
+              Name
+              <input type="text" name="name" placeholder="your name" required />
+            </label>
+            <label>
+              Email
+              <input
+                type="email"
+                name="email"
+                placeholder="your email"
+                required
+              />
+            </label>
+            <label>
+              Phone
+              <input
+                type="number"
+                name="phone"
+                placeholder="your phone"
+                required
+              />
+            </label>
+            <label>
+              Address
+              <input
+                type="text"
+                name="address"
+                placeholder="your address"
+                required
+              />
+            </label>
+          </div>
           <div className="form__list-medicine">
             <ul className="form__list">
               {validList &&
