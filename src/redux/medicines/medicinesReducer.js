@@ -46,6 +46,9 @@ const medicinesSlice = createSlice({
         (medicine) => medicine.id !== action.payload
       );
     },
+    deleteAllMedicine(state) {
+      state.shoppingCart = [];
+    },
   },
   extraReducers: (builder) =>
     builder
@@ -71,4 +74,5 @@ const medicinesSlice = createSlice({
 
 export const medicinesReducer = medicinesSlice.reducer;
 
-export const { addMedicine, deleteMedicine } = medicinesSlice.actions;
+export const { addMedicine, deleteMedicine, deleteAllMedicine } =
+  medicinesSlice.actions;

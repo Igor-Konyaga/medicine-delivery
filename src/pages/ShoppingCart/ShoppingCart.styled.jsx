@@ -27,15 +27,43 @@ export const StyledForm = styled.form`
   }
 
   .form__list-medicine {
+    position: relative;
     overflow-y: auto;
+
+    .form__wrapper-message-icon {
+      display: flex;
+      column-gap: 20px;
+      justify-content: center;
+      align-items: center;
+
+		width: 100%;
+
+      position: absolute;
+      top: 50%;
+      left: 50%;
+
+      transform: translate(-50%, -50px);
+
+      .form__shopping-cart-icon {
+        width: 50px;
+        height: 50px;
+        fill: #737373;
+      }
+
+      .form__message {
+        color: #737373;
+        font-weight: 600;
+        font-size: 26px;
+      }
+    }
   }
 
-  ul {
+  .form__list {
     display: flex;
     flex-wrap: wrap;
     row-gap: 24px;
 
-    li {
+    .form__list-item {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -60,11 +88,11 @@ export const StyledForm = styled.form`
 
         justify-content: space-evenly;
 
-        h3 {
+        .form__medicine-title {
           margin-bottom: 12px;
         }
 
-        p {
+        .form__medicine-price {
           font-weight: 400;
           font-size: 14px;
         }
