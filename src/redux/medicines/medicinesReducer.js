@@ -74,5 +74,5 @@ const medicinesSlice = createSlice({
 
 export const medicinesReducer = medicinesSlice.reducer;
 
-export const { addMedicine, deleteMedicine, deleteAllMedicine } =
+export const { addMedicine, deleteMedicine, deleteAllMedicine, addAmount } =
   medicinesSlice.actions;

@@ -6,6 +6,7 @@ import { TfiShoppingCart } from 'react-icons/tfi';
 import { FaPlus } from 'react-icons/fa';
 import { FaMinus } from 'react-icons/fa';
 import {
+  addAmount,
   deleteAllMedicine,
   deleteMedicine,
 } from '../../redux/medicines/medicinesReducer';
