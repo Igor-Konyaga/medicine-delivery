@@ -263,7 +263,7 @@ Notiflix needs to be appended to the "<`+v+'>" element, but you called it before
     align-items: center;
 
     padding: 12px 16px;
-    min-width: 160px;
+    width: 100%;
 
     border-radius: 8px;
     border: 2px solid #737373;
