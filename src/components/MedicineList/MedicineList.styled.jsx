@@ -13,9 +13,13 @@ export const StyledSectionMidicines = styled.div`
   border-radius: 8px;
 
   .midicines__title {
-    margin-bottom: 12px;
+    margin-bottom: 16px;
 
     font-size: 26px;
+
+	 @media only screen and (max-width: 1000px) {
+    text-align: center;
+  }
   }
 `;
 
@@ -23,4 +27,8 @@ export const StyledMedicineList = styled.ul`
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
+
+  @media only screen and (max-width: 800px) {
+    justify-content: center;
+  }
 `;

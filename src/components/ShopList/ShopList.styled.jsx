@@ -40,13 +40,6 @@ export const StyledShopList = styled.ul`
 `;
 
 export const StyledShopItem = styled.li`
-  /* flex-basis: calc(33.333% - 14px); */
-
-
-@media only screen and (max-width: 800px) {
-	/* flex-basis: calc(50% - 10px); */
-}
-
   .shop-btn {
     display: flex;
     justify-content: center;

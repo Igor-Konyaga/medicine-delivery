@@ -2,6 +2,10 @@ import styled from 'styled-components';
 
 export const StyledShoppingCart = styled.section`
   padding-top: 40px;
+
+  @media only screen and (max-width: 800px) {
+    padding-bottom: 40px;
+  }
 `;
 
 export const StyledForm = styled.form`
@@ -10,11 +14,25 @@ export const StyledForm = styled.form`
 
   row-gap: 20px;
 
+  @media only screen and (max-width: 800px) {
+    align-items: center;
+  }
+
   .form__wrapper-order {
     display: flex;
     column-gap: 20px;
 
     height: calc(100vh - 220px);
+
+    @media only screen and (max-width: 800px) {
+      flex-direction: column;
+
+      max-width: 100%;
+
+      row-gap: 30px;
+
+      height: auto;
+    }
   }
 
   .form__info-customer,
@@ -24,6 +42,10 @@ export const StyledForm = styled.form`
 
     border: 2px solid #737373;
     border-radius: 8px;
+
+    @media only screen and (max-width: 440px) {
+      padding: 16px;
+    }
   }
 
   .form__info-customer {
@@ -59,11 +81,15 @@ export const StyledForm = styled.form`
         }
       }
     }
+
+    order: 2;
   }
 
   .form__list-medicine {
     position: relative;
     overflow-y: auto;
+
+    order: 1;
 
     .form__wrapper-message-icon {
       display: flex;
@@ -117,11 +143,22 @@ export const StyledForm = styled.form`
       font-size: 20px;
       font-weight: 600;
 
+      @media only screen and (max-width: 440px) {
+        padding: 10px;
+      }
+
       .wrapper-content {
         display: flex;
         column-gap: 20px;
 
         justify-content: space-evenly;
+
+        @media only screen and (max-width: 440px) {
+          column-gap: 10px;
+        }
+        @media only screen and (max-width: 400px) {
+			justify-content: space-between;
+        }
 
         .form__medicine-title {
           margin-bottom: 12px;
@@ -212,14 +249,32 @@ export const StyledForm = styled.form`
     }
   }
   .form__wrapper-btn {
-    align-self: flex-end;
     display: flex;
     align-items: center;
+    justify-content: flex-end;
+
     column-gap: 50px;
+
+    width: 100%;
+
+    @media only screen and (max-width: 480px) {
+      justify-content: space-between;
+
+      column-gap: 10px;
+    }
+
+    @media only screen and (max-width: 450px) {
+      flex-direction: column;
+      column-gap: 0;
+
+      row-gap: 12px;
+    }
 
     .form__total-price {
       color: #737373;
       font-size: 22px;
+
+      align-self: flex-start;
     }
 
     .form__btn {

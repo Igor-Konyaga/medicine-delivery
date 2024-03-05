@@ -21,6 +21,12 @@ export const StyledMedicineCard = styled.li`
   font-size: 20px;
   font-weight: 600;
 
+ 
+
+  @media only screen and (max-width: 800px) {
+    flex-basis: 90%;
+  }
+
   .wrapper-content {
     display: flex;
     column-gap: 20px;
