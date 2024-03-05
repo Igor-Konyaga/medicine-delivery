@@ -157,7 +157,7 @@ export const StyledForm = styled.form`
           column-gap: 10px;
         }
         @media only screen and (max-width: 400px) {
-			justify-content: space-between;
+          justify-content: space-between;
         }
 
         .form__medicine-title {
@@ -251,14 +251,15 @@ export const StyledForm = styled.form`
   .form__wrapper-btn {
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+
+    align-self: flex-end;
 
     column-gap: 50px;
 
-    width: 100%;
-
     @media only screen and (max-width: 480px) {
       justify-content: space-between;
+      justify-content: flex-end;
+      width: 100%;
 
       column-gap: 10px;
     }
@@ -274,11 +275,16 @@ export const StyledForm = styled.form`
       color: #737373;
       font-size: 22px;
 
-      align-self: flex-start;
+      @media only screen and (max-width: 450px) {
+        align-self: flex-start;
+      }
+      @media only screen and (max-width: 450px) {
+        align-self: center;
+      }
     }
 
     .form__btn {
-      align-self: flex-end;
+      align-self: center;
 
       display: flex;
       justify-content: center;
@@ -305,6 +311,9 @@ export const StyledForm = styled.form`
 
         transition: all 0.3s;
       }
+    }
+    @media only screen and (min-width: 450px) {
+      align-self: flex-end;
     }
   }
 `;
