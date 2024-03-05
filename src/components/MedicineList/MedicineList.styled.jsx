@@ -22,6 +22,5 @@ export const StyledSectionMidicines = styled.div`
 export const StyledMedicineList = styled.ul`
   display: flex;
   flex-wrap: wrap;
-  column-gap: 60px;
-  row-gap: 30px;
+  gap: 20px;
 `;

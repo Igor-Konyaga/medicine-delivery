@@ -8,10 +8,11 @@ export const StyledMedicineCard = styled.li`
 
   row-gap: 16px;
 
-  flex-basis: calc(50% - 30px);
+  flex-basis: calc(50% - 10px);
 
   padding: 16px;
 
+  min-width: 290px;
   min-height: 200px;
 
   border: 2px solid #737373;

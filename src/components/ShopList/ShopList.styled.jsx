@@ -15,6 +15,11 @@ export const StyledSectionShops = styled.div`
   border: 2px solid #737373;
 
   border-radius: 8px;
+
+  @media only screen and (max-width: 1000px) {
+    padding: 16px;
+    row-gap: 16px;
+  }
 `;
 
 export const StyledTitle = styled.h3`
@@ -25,9 +30,23 @@ export const StyledShopList = styled.ul`
   display: flex;
   flex-direction: column;
   row-gap: 20px;
+
+  @media only screen and (max-width: 1000px) {
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    column-gap: 20px;
+  }
 `;
 
 export const StyledShopItem = styled.li`
+  /* flex-basis: calc(33.333% - 14px); */
+
+
+@media only screen and (max-width: 800px) {
+	/* flex-basis: calc(50% - 10px); */
+}
+
   .shop-btn {
     display: flex;
     justify-content: center;
