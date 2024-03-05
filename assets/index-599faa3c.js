@@ -155,8 +155,7 @@ Error generating stack: `+o.message+`
 `,Sw=Qe.ul`
   display: flex;
   flex-wrap: wrap;
-  column-gap: 60px;
-  row-gap: 30px;
+  gap: 20px;
 `,Cw=e=>e.medicines.medicineList,Ew=e=>e.medicines.allMedicine,fh=e=>e.medicines.shoppingCart,Nw=Qe.li`
   display: flex;
   flex-direction: column;
@@ -165,10 +164,11 @@ Error generating stack: `+o.message+`
 
   row-gap: 16px;
 
-  flex-basis: calc(50% - 30px);
+  flex-basis: calc(50% - 10px);
 
   padding: 16px;
 
+  min-width: 290px;
   min-height: 200px;
 
   border: 2px solid #737373;
@@ -294,13 +294,32 @@ Notiflix needs to be appended to the "<`+v+'>" element, but you called it before
   border: 2px solid #737373;
 
   border-radius: 8px;
+
+  @media only screen and (max-width: 1000px) {
+    padding: 16px;
+    row-gap: 16px;
+  }
 `,gb=Qe.h3`
   font-size: 26px;
 `,vb=Qe.ul`
   display: flex;
   flex-direction: column;
   row-gap: 20px;
+
+  @media only screen and (max-width: 1000px) {
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    column-gap: 20px;
+  }
 `,xb=Qe.li`
+  /* flex-basis: calc(33.333% - 14px); */
+
+
+@media only screen and (max-width: 800px) {
+	/* flex-basis: calc(50% - 10px); */
+}
+
   .shop-btn {
     display: flex;
     justify-content: center;
@@ -336,6 +355,12 @@ Notiflix needs to be appended to the "<`+v+'>" element, but you called it before
 
   padding-top: 40px;
   padding-bottom: 40px;
+
+  @media only screen and (max-width: 1000px) {
+    flex-direction: column;
+    row-gap: 20px;
+    column-gap: 0;
+  }
 `,_b=()=>O.jsxs(Nb,{children:[O.jsx(Eb,{}),O.jsx(hb,{})]}),Rb=Qe.section`
   padding-top: 40px;
 `,Pb=Qe.form`
