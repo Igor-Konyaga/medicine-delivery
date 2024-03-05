@@ -218,7 +218,7 @@ export const StyledForm = styled.form`
     column-gap: 50px;
 
     .form__total-price {
-		color: #737373;
+      color: #737373;
       font-size: 22px;
     }
 
