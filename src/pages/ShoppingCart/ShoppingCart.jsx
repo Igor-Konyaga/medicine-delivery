@@ -21,10 +21,6 @@ export const ShoppingCart = () => {
     return medicine.price * medicine.amount + acc;
   }, 0);
 
-  console.log(totalPrice);
-
-  console.log();
-
   const handleAmountChange = (medicineId, newAmount) => {
     dispatch(updateAmount({ medicineId, newAmount }));
   };
