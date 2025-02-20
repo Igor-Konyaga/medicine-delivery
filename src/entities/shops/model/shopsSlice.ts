@@ -1,18 +1,5 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { getShops } from '../../services/shopsApi';
-
-export const fetchAllShop = createAsyncThunk(
-  'shop/getAllShop',
-  async (_, thunkAPI) => {
-    try {
-      const { data } = await getShops();
-
-      return data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
-);
+import { createSlice } from '@reduxjs/toolkit';
+import { getAllShopsThunk } from './shopsThunks';
 
 const INITIAL_STATE = {
   shopList: [],
@@ -30,13 +17,13 @@ const shopsSlice = createSlice({
   },
   extraReducers: (builder) =>
     builder
-      .addCase(fetchAllShop.pending, (state) => {
+      .addCase(getAllShopsThunk.pending, (state) => {
         state.error = null;
       })
-      .addCase(fetchAllShop.fulfilled, (state, action) => {
+      .addCase(getAllShopsThunk.fulfilled, (state, action) => {
         state.shopList = action.payload.ResponseBody.shops;
       })
-      .addCase(fetchAllShop.rejected, (state, action) => {
+      .addCase(getAllShopsThunk.rejected, (state, action) => {
         state.error = action.payload;
       }),
 });

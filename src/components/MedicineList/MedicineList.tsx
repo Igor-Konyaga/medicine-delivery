@@ -1,15 +1,9 @@
 import { useSelector } from 'react-redux';
 
-import {
-  allMedicineData,
-  medicinesData,
-} from '../../redux/medicines/medicinesSelectors';
+import { allMedicineData, medicinesData } from '../../entities/medicines/model/medicinesSelectors';
 import { MedicineCard } from './MedicineCard/MedicineCard';
-import { shopData } from '../../redux/shops/shopsSelectors';
-import {
-  StyledMedicineList,
-  StyledSectionMidicines,
-} from './MedicineList.styled';
+import { shopData } from '../../entities/shops/model/shopsSelectors';
+import { StyledMedicineList, StyledSectionMidicines } from './MedicineList.styled';
 import React from 'react';
 
 export const MedicineList = () => {
@@ -19,14 +13,11 @@ export const MedicineList = () => {
 
   const renderMedicines = medicines.length === 0 ? allMedicine : medicines;
 
-  const validList =
-    Array.isArray(renderMedicines) && renderMedicines.length > 0;
+  const validList = Array.isArray(renderMedicines) && renderMedicines.length > 0;
 
   return (
     <StyledSectionMidicines>
-      <h3 className="midicines__title">
-        {medicines.length === 0 ? 'All medicine' : shopName}
-      </h3>
+      <h3 className="midicines__title">{medicines.length === 0 ? 'All medicine' : shopName}</h3>
       <StyledMedicineList>
         {validList &&
           renderMedicines.map((medicine) => {

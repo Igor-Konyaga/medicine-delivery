@@ -1,14 +1,14 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { shoppingCartData } from '../../redux/medicines/medicinesSelectors';
+import { shoppingCartData } from '../../entities/medicines/model/medicinesSelectors';
 import { GiMedicines } from 'react-icons/gi';
 import { TfiShoppingCart } from 'react-icons/tfi';
 import { FaPlus } from 'react-icons/fa';
 import { FaMinus } from 'react-icons/fa';
-import { deleteAllMedicine, deleteMedicine, updateAmount } from '../../redux/medicines/medicinesReducer';
-import { fetchCreateOrder } from '../../redux/orders/ordersReducer';
+import { deleteAllMedicine, deleteMedicine, updateAmount } from '../../entities/medicines/model/medicinesSlice';
+import { fetchCreateOrder } from '../../entities/orders/ordersReducer';
 import Notiflix from 'notiflix';
 import React from 'react';
-import { StyledForm, StyledShoppingCart } from './ShoppingCart.styled';
+import { StyledForm, StyledShoppingCart } from './ui/ShoppingCart.styled';
 
 export const ShoppingCart = () => {
   const shoppingCart = useSelector(shoppingCartData);

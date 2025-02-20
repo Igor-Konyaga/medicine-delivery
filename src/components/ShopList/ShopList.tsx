@@ -1,14 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  StyledSectionShops,
-  StyledShopItem,
-  StyledShopList,
-  StyledTitle,
-} from './ShopList.styled';
-import { shops } from '../../redux/shops/shopsSelectors';
-import { fetchMedicines } from '../../redux/medicines/medicinesReducer';
+import { StyledSectionShops, StyledShopItem, StyledShopList, StyledTitle } from './ShopList.styled';
+import { shops } from '../../entities/shops/model/shopsSelectors';
+import { fetchMedicines } from '../../entities/medicines/model/medicinesSlice';
 import { useState } from 'react';
-import { setShopName } from '../../redux/shops/shopsReducer';
+import { setShopName } from '../../entities/shops/shopsSlice';
 import React from 'react';
 
 export const ShopList = () => {
@@ -35,14 +30,9 @@ export const ShopList = () => {
         {validList &&
           shopList.map((shop) => {
             return (
-              <StyledShopItem
-                onClick={() => handleClick(shop._id)}
-                key={shop.name}
-              >
+              <StyledShopItem onClick={() => handleClick(shop._id)} key={shop.name}>
                 <button
-                  className={
-                    activeBtn === shop._id ? 'shop-btn active' : 'shop-btn'
-                  }
+                  className={activeBtn === shop._id ? 'shop-btn active' : 'shop-btn'}
                   onClick={() => handleClickBtn(shop._id, shop.name)}
                   type="button"
                 >

@@ -4,8 +4,8 @@ import { GiMedicines } from 'react-icons/gi';
 import { FaPlus } from 'react-icons/fa';
 import { FaMinus } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
-import { addMedicine, deleteMedicine } from '../../../redux/medicines/medicinesReducer';
-import { shoppingCartData } from '../../../redux/medicines/medicinesSelectors';
+import { addMedicine, deleteMedicine } from '../../../entities/medicines/model/medicinesSlice';
+import { shoppingCartData } from '../../../entities/medicines/model/medicinesSelectors';
 import Notiflix from 'notiflix';
 import React from 'react';
 
