@@ -1,14 +1,16 @@
 import { useSelector } from 'react-redux';
-import {
-  StyledMedicineList,
-  StyledSectionMidicines,
-} from './MedicineList.styled';
+
 import {
   allMedicineData,
   medicinesData,
 } from '../../redux/medicines/medicinesSelectors';
 import { MedicineCard } from './MedicineCard/MedicineCard';
 import { shopData } from '../../redux/shops/shopsSelectors';
+import {
+  StyledMedicineList,
+  StyledSectionMidicines,
+} from './MedicineList.styled';
+import React from 'react';
 
 export const MedicineList = () => {
   const medicines = useSelector(medicinesData);
@@ -33,7 +35,7 @@ export const MedicineList = () => {
                 key={medicine._id}
                 id={medicine._id}
                 name={medicine.name}
-					 price={medicine.price}
+                price={medicine.price}
               />
             );
           })}

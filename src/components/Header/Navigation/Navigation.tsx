@@ -1,3 +1,4 @@
+import React from 'react';
 import { StyledLink, StyledNav } from './Navigation.styled';
 
 export const Navigation = () => {

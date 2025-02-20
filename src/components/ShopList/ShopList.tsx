@@ -9,16 +9,17 @@ import { shops } from '../../redux/shops/shopsSelectors';
 import { fetchMedicines } from '../../redux/medicines/medicinesReducer';
 import { useState } from 'react';
 import { setShopName } from '../../redux/shops/shopsReducer';
+import React from 'react';
 
 export const ShopList = () => {
-  const [activeBtn, setActiveBtn] = useState(null);
+  const [activeBtn, setActiveBtn] = useState<string | null>(null);
   const dispatch = useDispatch();
 
-  const handleClick = (btnId) => {
+  const handleClick = (btnId: string) => {
     setActiveBtn(btnId);
   };
 
-  const handleClickBtn = (shopId, shopName) => {
+  const handleClickBtn = (shopId: string, shopName: string) => {
     dispatch(fetchMedicines(shopId));
     dispatch(setShopName(shopName));
   };

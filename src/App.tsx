@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { fetchAllShop } from './redux/shops/shopsReducer';
 import { fetchAllMedicine } from './redux/medicines/medicinesReducer';
+import React from 'react';
 
 function App() {
   const dispatch = useDispatch();

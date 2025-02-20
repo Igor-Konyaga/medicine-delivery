@@ -1,3 +1,4 @@
+import React from 'react';
 import { MedicineList } from '../../components/MedicineList/MedicineList';
 import { ShopList } from '../../components/ShopList/ShopList';
 import { StyledShopPage } from './Shop.styled';

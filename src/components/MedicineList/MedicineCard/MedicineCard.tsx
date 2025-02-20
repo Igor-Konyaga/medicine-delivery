@@ -1,17 +1,21 @@
-import { useState } from 'react';
+import { FC, useState } from 'react';
 import { StyledMedicineCard } from './MedicineCard.styled';
 import { GiMedicines } from 'react-icons/gi';
 import { FaPlus } from 'react-icons/fa';
 import { FaMinus } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  addMedicine,
-  deleteMedicine,
-} from '../../../redux/medicines/medicinesReducer';
+import { addMedicine, deleteMedicine } from '../../../redux/medicines/medicinesReducer';
 import { shoppingCartData } from '../../../redux/medicines/medicinesSelectors';
 import Notiflix from 'notiflix';
+import React from 'react';
 
-export const MedicineCard = ({ name, id, price }) => {
+type MedicineCardProps = {
+  name: string;
+  id: string;
+  price: string;
+};
+
+export const MedicineCard: FC<MedicineCardProps> = ({ name, id, price }) => {
   const [addCart, setAddCart] = useState(false);
   const [amount, setAmount] = useState(1);
 

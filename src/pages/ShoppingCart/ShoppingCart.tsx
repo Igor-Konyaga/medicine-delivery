@@ -1,17 +1,14 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { shoppingCartData } from '../../redux/medicines/medicinesSelectors';
-import { StyledForm, StyledShoppingCart } from './ShoppingCart.styled';
 import { GiMedicines } from 'react-icons/gi';
 import { TfiShoppingCart } from 'react-icons/tfi';
 import { FaPlus } from 'react-icons/fa';
 import { FaMinus } from 'react-icons/fa';
-import {
-  deleteAllMedicine,
-  deleteMedicine,
-  updateAmount,
-} from '../../redux/medicines/medicinesReducer';
+import { deleteAllMedicine, deleteMedicine, updateAmount } from '../../redux/medicines/medicinesReducer';
 import { fetchCreateOrder } from '../../redux/orders/ordersReducer';
 import Notiflix from 'notiflix';
+import React from 'react';
+import { StyledForm, StyledShoppingCart } from './ShoppingCart.styled';
 
 export const ShoppingCart = () => {
   const shoppingCart = useSelector(shoppingCartData);
@@ -67,30 +64,15 @@ export const ShoppingCart = () => {
             </label>
             <label>
               Email
-              <input
-                type="email"
-                name="email"
-                placeholder="your email"
-                required
-              />
+              <input type="email" name="email" placeholder="your email" required />
             </label>
             <label>
               Phone
-              <input
-                type="number"
-                name="phone"
-                placeholder="your phone"
-                required
-              />
+              <input type="number" name="phone" placeholder="your phone" required />
             </label>
             <label>
               Address
-              <input
-                type="text"
-                name="address"
-                placeholder="your address"
-                required
-              />
+              <input type="text" name="address" placeholder="your address" required />
             </label>
           </div>
           <div className="form__list-medicine">
@@ -102,22 +84,15 @@ export const ShoppingCart = () => {
                       <div className="wrapper-content">
                         <GiMedicines className="card__icon" />
                         <div>
-                          <h3 className="form__medicine-title">
-                            {medicine.name}
-                          </h3>
-                          <p className="form__medicine-price">
-                            Price: {medicine.price} UA
-                          </p>
+                          <h3 className="form__medicine-title">{medicine.name}</h3>
+                          <p className="form__medicine-price">Price: {medicine.price} UA</p>
                           <div className="card__amount">
                             <button
                               onClick={() => {
                                 if (medicine.amount <= 1) {
                                   return;
                                 }
-                                handleAmountChange(
-                                  medicine.id,
-                                  medicine.amount - 1
-                                );
+                                handleAmountChange(medicine.id, medicine.amount - 1);
                               }}
                               type="button"
                             >
@@ -126,10 +101,7 @@ export const ShoppingCart = () => {
                             {medicine.amount}
                             <button
                               onClick={() => {
-                                handleAmountChange(
-                                  medicine.id,
-                                  medicine.amount + 1
-                                );
+                                handleAmountChange(medicine.id, medicine.amount + 1);
                               }}
                               type="button"
                             >
