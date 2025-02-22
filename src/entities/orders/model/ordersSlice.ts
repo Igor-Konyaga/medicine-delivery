@@ -1,26 +1,22 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { createOrderThunk } from './ordersThunks';
+import { OrdersState } from './types';
 
-const INITIAL_STATE = {
+const initialState: OrdersState = {
+  allOrders: null,
   order: null,
   error: null,
 };
 
 const ordersSlice = createSlice({
   name: 'orders',
-  initialState: INITIAL_STATE,
+  initialState,
   reducers: {},
   extraReducers: (builder) =>
     builder
-      .addCase(createOrderThunk.pending, (state) => {
-        state.error = null;
-      })
-      .addCase(createOrderThunk.fulfilled, (state, action) => {
-        state.order = action.payload.newOrder;
-      })
-      .addCase(createOrderThunk.rejected, (state, action) => {
-        state.error = action.payload;
-      }),
+      .addCase(createOrderThunk.pending, (state) => {})
+      .addCase(createOrderThunk.fulfilled, (state, action) => {})
+      .addCase(createOrderThunk.rejected, (state, action) => {}),
 });
 
 export const ordersReducer = ordersSlice.reducer;

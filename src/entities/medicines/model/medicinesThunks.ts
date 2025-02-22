@@ -5,11 +5,14 @@ export const getAllMedicineThunk = createAsyncThunk(
   'medicines/getAllMedicine',
   async (_, thunkAPI) => {
     try {
-      const { data } = await fetchAllMedicines();
+      const data = await fetchAllMedicines();
 
       return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      if (error instanceof Error) {
+        return thunkAPI.rejectWithValue(error.message);
+      }
+      return thunkAPI.rejectWithValue('Unknown error');
     }
   }
 );
@@ -18,11 +21,14 @@ export const getMedicinesByShopThunk = createAsyncThunk(
   'medicines/getMedicinesByShop',
   async (shopId: string, thunkAPI) => {
     try {
-      const { data } = await fetchMedicinesByShop(shopId);
+      const data = await fetchMedicinesByShop(shopId);
 
       return data;
-    } catch (error: unknown) {
-      return thunkAPI.rejectWithValue(error.message);
+    } catch (error) {
+      if (error instanceof Error) {
+        return thunkAPI.rejectWithValue(error.message);
+      }
+      return thunkAPI.rejectWithValue('Unknown error');
     }
   }
 );

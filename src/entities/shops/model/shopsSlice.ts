@@ -1,7 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { getAllShopsThunk } from './shopsThunks';
+import { ShopsState } from './types';
 
-const INITIAL_STATE = {
+const initialState: ShopsState = {
   shopList: [],
   shopName: '',
   error: null,
@@ -9,7 +10,7 @@ const INITIAL_STATE = {
 
 const shopsSlice = createSlice({
   name: 'medicines',
-  initialState: INITIAL_STATE,
+  initialState,
   reducers: {
     setShopName(state, action) {
       state.shopName = action.payload;
@@ -21,11 +22,9 @@ const shopsSlice = createSlice({
         state.error = null;
       })
       .addCase(getAllShopsThunk.fulfilled, (state, action) => {
-        state.shopList = action.payload.ResponseBody.shops;
+        state.shopList = action.payload;
       })
-      .addCase(getAllShopsThunk.rejected, (state, action) => {
-        state.error = action.payload;
-      }),
+      .addCase(getAllShopsThunk.rejected, (state, action) => {}),
 });
 
 export const shopsReducer = shopsSlice.reducer;

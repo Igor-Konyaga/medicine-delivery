@@ -1,6 +1,4 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { medicinesReducer } from '../../../entities/medicines/model/medicinesSlice';
-import { shopsReducer } from '../../../entities/shops/shopsSlice';
 import {
   persistStore,
   persistReducer,
@@ -12,7 +10,9 @@ import {
   REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import { ordersReducer } from '../../../entities/orders/ordersReducer';
+import { ordersReducer } from '../../../entities/orders/model/ordersSlice';
+import { shopsReducer } from '../../../entities/shops/model/shopsSlice';
+import { medicinesReducer } from '../../../entities/medicines';
 
 const medicinesPersistConfig = {
   key: 'medicines',

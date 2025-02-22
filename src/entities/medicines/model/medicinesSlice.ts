@@ -1,7 +1,8 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import { getAllMedicineThunk, getMedicinesByShopThunk } from './medicinesThunks';
+import { MedicinesState } from './types';
 
-const INITIAL_STATE = {
+const initialState: MedicinesState = {
   allMedicine: [],
   medicineList: [],
   shoppingCart: [],
@@ -10,25 +11,25 @@ const INITIAL_STATE = {
 
 const medicinesSlice = createSlice({
   name: 'medicines',
-  initialState: INITIAL_STATE,
+  initialState: initialState,
   reducers: {
     addMedicine(state, action) {
       state.shoppingCart = [action.payload, ...state.shoppingCart];
     },
     deleteMedicine(state, action) {
-      state.shoppingCart = state.shoppingCart.filter((medicine) => medicine.id !== action.payload);
+      state.shoppingCart = state.shoppingCart.filter((medicine) => medicine._id !== action.payload);
     },
     deleteAllMedicine(state) {
       state.shoppingCart = [];
     },
-    updateAmount(state, action) {
-      const { medicineId, newAmount } = action.payload;
+    // updateAmount(state, action) {
+    //   const { medicineId, newAmount } = action.payload;
 
-      const medicineUpdate = state.shoppingCart.find((item) => item.id === medicineId);
-      if (medicineUpdate) {
-        medicineUpdate.amount = newAmount;
-      }
-    },
+    //   const medicineUpdate = state.shoppingCart.find((item) => item._id === medicineId);
+    //   if (medicineUpdate) {
+    //     medicineUpdate.amount = newAmount;
+    //   }
+    // },
   },
   extraReducers: (builder) =>
     builder
@@ -36,23 +37,18 @@ const medicinesSlice = createSlice({
         state.error = null;
       })
       .addCase(getMedicinesByShopThunk.fulfilled, (state, action) => {
-        state.medicineList = action.payload.medicines;
+        state.medicineList = action.payload;
       })
-      .addCase(getMedicinesByShopThunk.rejected, (state, action) => {
-        state.error = action.payload;
-      })
+      .addCase(getMedicinesByShopThunk.rejected, (state, action) => {})
       .addCase(getAllMedicineThunk.pending, (state) => {
         state.error = null;
       })
       .addCase(getAllMedicineThunk.fulfilled, (state, action) => {
-        state.allMedicine = action.payload.allMedicine;
+        state.allMedicine = action.payload;
       })
-      .addCase(getAllMedicineThunk.rejected, (state, action) => {
-        state.error = action.payload;
-      }),
+      .addCase(getAllMedicineThunk.rejected, (state, action) => {}),
 });
 
 export const medicinesReducer = medicinesSlice.reducer;
 
-export const { addMedicine, deleteMedicine, deleteAllMedicine, updateAmount } =
-  medicinesSlice.actions;
+export const { addMedicine, deleteMedicine, deleteAllMedicine } = medicinesSlice.actions;

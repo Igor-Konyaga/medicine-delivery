@@ -1,12 +1,15 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { getShops } from './shopsApi';
+import { getAllShops } from './shopsApi';
 
 export const getAllShopsThunk = createAsyncThunk('shop/getAllShop', async (_, thunkAPI) => {
   try {
-    const { data } = await getShops();
+    const data = await getAllShops();
 
     return data;
   } catch (error) {
-    return thunkAPI.rejectWithValue(error.message);
+    if (error instanceof Error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+    return thunkAPI.rejectWithValue('Unknown error');
   }
 });
