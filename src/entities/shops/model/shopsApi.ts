@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { Shop } from './types';
+import { ShopsResponse } from './types';
 
 const medicineInstance = axios.create({
   baseURL: 'http://localhost:3001/',
@@ -7,7 +7,7 @@ const medicineInstance = axios.create({
 });
 
 export const fetchAllShops = async () => {
-  const response = await medicineInstance.get<Shop[]>('api/shops');
+  const { data } = await medicineInstance.get<ShopsResponse>('api/shops');
 
-  return response.data;
+  return data.allShop;
 };

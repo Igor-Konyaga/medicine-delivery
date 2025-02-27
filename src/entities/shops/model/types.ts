@@ -10,3 +10,8 @@ export type ShopsState = {
   shopName: string;
   error: string | null;
 };
+
+export type ShopsResponse = {
+  message: string;
+  allShop: Shop[];
+};

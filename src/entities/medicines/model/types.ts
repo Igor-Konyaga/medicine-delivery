@@ -13,3 +13,8 @@ export type MedicinesState = {
   shoppingCart: Medicine[];
   error: string | null;
 };
+
+export type MedicinesResponse = {
+  message: string;
+  allMedicine: Medicine[];
+};

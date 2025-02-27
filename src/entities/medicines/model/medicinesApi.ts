@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from 'axios';
-import { Medicine } from './types';
+import { Medicine, MedicinesResponse } from './types';
 
 const medicineInstance = axios.create({
   baseURL: 'http://localhost:3001/',
@@ -7,24 +7,26 @@ const medicineInstance = axios.create({
 });
 
 export const fetchAllMedicines = async (): Promise<Medicine[]> => {
-  const responce = await medicineInstance.get<Medicine[]>('api/medicines');
-  return responce.data;
+  const { data } = await medicineInstance.get<MedicinesResponse>('api/medicines');
+
+  return data.allMedicine;
 };
 
 export const fetchMedicinesByShop = async (shopId: string): Promise<Medicine[]> => {
-  const responce = await medicineInstance.post<Medicine[]>('api/medicines', {
+  const { data } = await medicineInstance.post<MedicinesResponse>('api/medicines', {
     shopId,
   });
-  return responce.data;
+
+  return data.allMedicine;
 };
 
-export const createMedicines = async (name: string, price: number, shopId: string) => {
+export const createMedicine = async (name: string, price: number, shopId: string) => {
   const body = {
     name,
     price,
     owner: shopId,
   };
-  const data = await medicineInstance.post('api/medicines', body);
+  const { data } = await medicineInstance.post('api/medicines', body);
 
   return data;
 };

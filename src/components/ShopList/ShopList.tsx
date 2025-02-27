@@ -5,7 +5,6 @@ import React from 'react';
 import { getAllShops, setShopName } from '../../entities/shops';
 import { getMedicinesByShopThunk } from '../../entities/medicines';
 import { useAppDispatch, useAppSelector } from '../../shared/model/hooks/redux';
-import { log } from 'console';
 
 export const ShopList = () => {
   const [activeBtn, setActiveBtn] = useState<string | null>(null);
@@ -21,8 +20,6 @@ export const ShopList = () => {
   };
 
   const shopList = useAppSelector(getAllShops);
-
-  console.log(shopList);
 
   const validList = Array.isArray(shopList) && shopList.length > 0;
 
