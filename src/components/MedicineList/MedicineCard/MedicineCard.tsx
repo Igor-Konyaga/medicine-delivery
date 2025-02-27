@@ -3,27 +3,27 @@ import { StyledMedicineCard } from './MedicineCard.styled';
 import { GiMedicines } from 'react-icons/gi';
 import { FaPlus } from 'react-icons/fa';
 import { FaMinus } from 'react-icons/fa';
-import { useDispatch, useSelector } from 'react-redux';
 import { addMedicine, deleteMedicine } from '../../../entities/medicines/model/medicinesSlice';
-import { shoppingCartData } from '../../../entities/medicines/model/medicinesSelectors';
 import Notiflix from 'notiflix';
 import React from 'react';
+import { getShoppingCartData } from '../../../entities/medicines';
+import { useAppDispatch, useAppSelector } from '../../../shared/model/hooks/redux';
 
 type MedicineCardProps = {
   name: string;
   id: string;
-  price: string;
+  price: number;
 };
 
 export const MedicineCard: FC<MedicineCardProps> = ({ name, id, price }) => {
   const [addCart, setAddCart] = useState(false);
   const [amount, setAmount] = useState(1);
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
-  const shoppingCart = useSelector(shoppingCartData);
+  const shoppingCart = useAppSelector(getShoppingCartData);
 
-  const isAdded = shoppingCart.some((medicine) => medicine.id === id);
+  const isAdded = shoppingCart.some((medicine) => medicine._id === id);
 
   const medicine = {
     id,

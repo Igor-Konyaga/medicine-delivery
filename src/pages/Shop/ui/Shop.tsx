@@ -1,7 +1,8 @@
 import React from 'react';
-import { MedicineList } from '../../components/MedicineList/MedicineList';
-import { ShopList } from '../../components/ShopList/ShopList';
+
 import { StyledShopPage } from './Shop.styled';
+import { ShopList } from '../../../components/ShopList/ShopList';
+import { MedicineList } from '../../../components/MedicineList/MedicineList';
 
 export const Shop = () => {
   return (

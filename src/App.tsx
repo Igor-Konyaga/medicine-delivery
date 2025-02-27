@@ -1,19 +1,20 @@
 import { Route, Routes } from 'react-router-dom';
-import SharedLayout from '../src/components/SharedLayout/SharedLayout';
-import { Shop } from './pages/Shop/Shop';
-import { ShoppingCart } from './pages/ShoppingCart/ShoppingCart';
+
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { fetchAllShop } from './entities/shops/shopsSlice';
-import { fetchAllMedicine } from './entities/medicines/model/medicinesSlice';
 import React from 'react';
+import { useAppDispatch } from './shared/model/hooks/redux';
+import { getAllShopsThunk } from './entities/shops';
+import { getAllMedicineThunk } from './entities/medicines';
+import SharedLayout from './shared/ui/SharedLayout/SharedLayout';
+import { Shop } from './pages/Shop/ui/Shop';
+import { ShoppingCart } from './pages/ShoppingCart/ui/ShoppingCart';
 
 function App() {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(fetchAllShop());
-    dispatch(fetchAllMedicine());
+    dispatch(getAllShopsThunk());
+    dispatch(getAllMedicineThunk());
   }, [dispatch]);
 
   return (

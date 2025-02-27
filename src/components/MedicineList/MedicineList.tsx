@@ -1,15 +1,14 @@
-import { useSelector } from 'react-redux';
-
-import { allMedicineData, medicinesData } from '../../entities/medicines/model/medicinesSelectors';
 import { MedicineCard } from './MedicineCard/MedicineCard';
-import { shopData } from '../../entities/shops/model/shopsSelectors';
 import { StyledMedicineList, StyledSectionMidicines } from './MedicineList.styled';
 import React from 'react';
+import { getShopName } from '../../entities/shops';
+import { getAllMedicines, getMedicinesByShop } from '../../entities/medicines';
+import { useAppSelector } from '../../shared/model/hooks/redux';
 
 export const MedicineList = () => {
-  const medicines = useSelector(medicinesData);
-  const allMedicine = useSelector(allMedicineData);
-  const shopName = useSelector(shopData);
+  const medicines = useAppSelector(getMedicinesByShop);
+  const allMedicine = useAppSelector(getAllMedicines);
+  const shopName = useAppSelector(getShopName);
 
   const renderMedicines = medicines.length === 0 ? allMedicine : medicines;
 

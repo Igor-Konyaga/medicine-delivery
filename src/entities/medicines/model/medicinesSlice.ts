@@ -22,14 +22,14 @@ const medicinesSlice = createSlice({
     deleteAllMedicine(state) {
       state.shoppingCart = [];
     },
-    // updateAmount(state, action) {
-    //   const { medicineId, newAmount } = action.payload;
+    updateAmount(state, action) {
+      const { medicineId, newAmount } = action.payload;
 
-    //   const medicineUpdate = state.shoppingCart.find((item) => item._id === medicineId);
-    //   if (medicineUpdate) {
-    //     medicineUpdate.amount = newAmount;
-    //   }
-    // },
+      const medicineUpdate = state.shoppingCart.find((item) => item._id === medicineId);
+      if (medicineUpdate) {
+        medicineUpdate.amount = newAmount;
+      }
+    },
   },
   extraReducers: (builder) =>
     builder

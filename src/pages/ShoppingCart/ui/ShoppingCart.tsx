@@ -1,41 +1,44 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { shoppingCartData } from '../../entities/medicines/model/medicinesSelectors';
 import { GiMedicines } from 'react-icons/gi';
 import { TfiShoppingCart } from 'react-icons/tfi';
 import { FaPlus } from 'react-icons/fa';
 import { FaMinus } from 'react-icons/fa';
-import { deleteAllMedicine, deleteMedicine, updateAmount } from '../../entities/medicines/model/medicinesSlice';
-import { fetchCreateOrder } from '../../entities/orders/ordersReducer';
 import Notiflix from 'notiflix';
-import React from 'react';
-import { StyledForm, StyledShoppingCart } from './ui/ShoppingCart.styled';
+import React, { FormEvent } from 'react';
+import {
+  deleteAllMedicine,
+  deleteMedicine,
+  getShoppingCartData,
+} from '../../../entities/medicines';
+import { createOrderThunk } from '../../../entities/orders';
+import { StyledForm, StyledShoppingCart } from './ShoppingCart.styled';
+import { useAppDispatch, useAppSelector } from '../../../shared/model/hooks/redux';
 
 export const ShoppingCart = () => {
-  const shoppingCart = useSelector(shoppingCartData);
-  const dispatch = useDispatch();
+  const shoppingCart = useAppSelector(getShoppingCartData);
+  const dispatch = useAppDispatch();
 
   const totalPrice = shoppingCart.reduce((acc, medicine) => {
     return medicine.price * medicine.amount + acc;
   }, 0);
 
-  const handleAmountChange = (medicineId, newAmount) => {
-    dispatch(updateAmount({ medicineId, newAmount }));
+  const handleAmountChange = (medicineId: string, newAmount: string) => {
+    // dispatch(updateAmount({ medicineId, newAmount }));
   };
 
   const validList = Array.isArray(shoppingCart) && shoppingCart.length > 0;
 
-  const handleSubmitForm = async (e) => {
+  const handleSubmitForm = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const name = e.currentTarget.elements.name.value;
-    const email = e.currentTarget.elements.email.value;
-    const phone = e.currentTarget.elements.phone.value;
-    const address = e.currentTarget.elements.address.value;
+    const name = (e.currentTarget.elements.namedItem('name') as HTMLInputElement).value;
+    const email = (e.currentTarget.elements.namedItem('email') as HTMLInputElement).value;
+    const phone = (e.currentTarget.elements.namedItem('phone') as HTMLInputElement).value;
+    const address = (e.currentTarget.elements.namedItem('address') as HTMLInputElement).value;
 
     const orderData = {
       name,
       email,
-      phone,
+      phone: Number(phone),
       address,
       medicineList: shoppingCart,
     };
@@ -45,7 +48,7 @@ export const ShoppingCart = () => {
       return;
     }
 
-    dispatch(fetchCreateOrder(orderData));
+    dispatch(createOrderThunk(orderData));
     dispatch(deleteAllMedicine());
 
     e.currentTarget.reset();
@@ -92,7 +95,7 @@ export const ShoppingCart = () => {
                                 if (medicine.amount <= 1) {
                                   return;
                                 }
-                                handleAmountChange(medicine.id, medicine.amount - 1);
+                                handleAmountChange(medicine._id, medicine.amount - 1);
                               }}
                               type="button"
                             >
@@ -101,7 +104,7 @@ export const ShoppingCart = () => {
                             {medicine.amount}
                             <button
                               onClick={() => {
-                                handleAmountChange(medicine.id, medicine.amount + 1);
+                                handleAmountChange(medicine._id, medicine.amount + 1);
                               }}
                               type="button"
                             >
@@ -112,7 +115,7 @@ export const ShoppingCart = () => {
                       </div>
                       <button
                         onClick={() => {
-                          dispatch(deleteMedicine(medicine.id));
+                          dispatch(deleteMedicine(medicine._id));
                           Notiflix.Notify.success('Removed from cart!');
                         }}
                         className="card__btn"
